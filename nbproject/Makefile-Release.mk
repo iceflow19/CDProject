@@ -35,9 +35,13 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/BothEndianInt.o \
+	${OBJECTDIR}/BothEndianShort.o \
 	${OBJECTDIR}/DescriptorDateTime.o \
+	${OBJECTDIR}/DirectoryRecord.o \
 	${OBJECTDIR}/OptionParser.o \
 	${OBJECTDIR}/ProgramOptions.o \
+	${OBJECTDIR}/VolumeDescriptor.o \
 	${OBJECTDIR}/main.o
 
 
@@ -65,10 +69,25 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cdproject: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cdproject ${OBJECTFILES} ${LDLIBSOPTIONS}
 
+${OBJECTDIR}/BothEndianInt.o: BothEndianInt.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/BothEndianInt.o BothEndianInt.cpp
+
+${OBJECTDIR}/BothEndianShort.o: BothEndianShort.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/BothEndianShort.o BothEndianShort.cpp
+
 ${OBJECTDIR}/DescriptorDateTime.o: DescriptorDateTime.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/DescriptorDateTime.o DescriptorDateTime.cpp
+
+${OBJECTDIR}/DirectoryRecord.o: DirectoryRecord.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/DirectoryRecord.o DirectoryRecord.cpp
 
 ${OBJECTDIR}/OptionParser.o: OptionParser.cpp 
 	${MKDIR} -p ${OBJECTDIR}
@@ -79,6 +98,11 @@ ${OBJECTDIR}/ProgramOptions.o: ProgramOptions.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/ProgramOptions.o ProgramOptions.cpp
+
+${OBJECTDIR}/VolumeDescriptor.o: VolumeDescriptor.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/VolumeDescriptor.o VolumeDescriptor.cpp
 
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}
