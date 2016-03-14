@@ -77,47 +77,47 @@ void handleOptions(ProgramOptions &po, int opt, int *option_index)
             strncpy(po.volumeID, optarg, sizeof(po.volumeID));
             break;
         case VOLUME_SEQUENCE_NBR:
-            //strncpy(po.volumeSequenceNumber, optarg, sizeof(po.volumeSequenceNumber));
+            po.volumeSequenceNumber = atoi(optarg);
             break;
         case VOLUME_SET_IDENTIFIER:
             strncpy(po.volumeSetIdentifier, optarg, sizeof(po.volumeSetIdentifier));
             break;
         case VOLUME_SET_IDENTIFIER_FILE:
             po.volumeSetIdentifierFile = optarg;
-            po.loadFile(po.volumeSetIdentifier, 0, po.volumeSetIdentifierFile);
+            po.loadFile(po.volumeSetIdentifier, 32, po.volumeSetIdentifierFile);
             break;
         case PUBLISHER_IDENTIFIER:
             strncpy(po.publisherIdentifier, optarg, sizeof(po.publisherIdentifier));
             break;
         case PUBLISHER_IDENTIFIER_FILE:
             po.publisherIdentifierFile = optarg;
-            po.loadFile(po.publisherIdentifier, 0, po.publisherIdentifierFile);
+            po.loadFile(po.publisherIdentifier, 32, po.publisherIdentifierFile);
             break;
         case DATA_PREPARER_IDENTIFIER:
-            po.dataPreparerIdentifier = optarg;
+            strncpy(po.dataPreparerIdentifier, optarg, sizeof(po.dataPreparerIdentifier));
             break;
         case DATA_PREPARER_IDENTIFIER_FILE:
             po.dataPreparerIdentifierFile = optarg;
-            po.loadFile(po.applicationUse, 0, po.applicationUseFile.c_str());
+            po.loadFile(po.dataPreparerIdentifier, 32, po.dataPreparerIdentifierFile.c_str());
             break;
         case APPLICATION_IDENTIFIER:
-            po.applicationIdentifier = optarg;
+            strncpy(po.applicationIdentifier, optarg, sizeof(po.applicationIdentifier));
             break;
         case APPLICATION_IDENTIFIER_FILE:
             po.applicationIdentifierFile = optarg;
-            po.loadFile(po.applicationUse, 0, po.applicationUseFile.c_str());
+            po.loadFile(po.applicationIdentifier, 32, po.applicationIdentifierFile.c_str());
             break;
         case COPYRIGHT_FILE_IDENTIFIER:
-            po.copyrightFileIdentifier = optarg;
+            strncpy(po.copyrightFileIdentifier, optarg, sizeof(po.copyrightFileIdentifier));
             break;
         case ABSTRACT_FILE_IDENTIFIER:
-            po.abstractFileIdentifier = optarg;
+            strncpy(po.abstractFileIdentifier, optarg, sizeof(po.abstractFileIdentifier));
             break;
         case BIBLIOGRAPHIC_FILE_IDENTIFIER:
-            po.bibliographicFileIdentifier = optarg;
+            strncpy(po.bibliographicFileIdentifier, optarg, sizeof(po.bibliographicFileIdentifier));
             break;
         case APPLICATION_USE:
-            po.applicationUse = optarg;
+            strncpy(po.applicationUse, optarg, sizeof(po.applicationUse));
             break;
         case APPLICATION_USE_FILE:
             po.applicationUseFile = optarg;
@@ -127,7 +127,7 @@ void handleOptions(ProgramOptions &po, int opt, int *option_index)
             po.directoryTree = optarg;
             break;
         case EXPIRATION_DATE_AND_TIME:
-            po.expirationDateAndTime = optarg;
+            strncpy(po.expirationDateAndTime, optarg, sizeof(po.expirationDateAndTime));
             break;
         default:
             abort();

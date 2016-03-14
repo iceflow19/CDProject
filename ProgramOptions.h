@@ -12,24 +12,24 @@
 
 class ProgramOptions {
 public:
-    char        systemID[32]                    = "NO SYSTEM ID";
-    char        volumeID[32]                    = "NO VOLUME ID";
+    char        systemID[32]                    = {0};
+    char        volumeID[32]                    = {0};
     int         volumeSequenceNumber            = 1;
-    char        volumeSetIdentifier[32]         = "NO-VOLUME-SET-ID";
-    std::string volumeSetIdentifierFile         = "";
-    char        publisherIdentifier[32];
-    std::string publisherIdentifierFile         = "";
-    char        dataPreparerIdentifier[32];
+    char        volumeSetIdentifier[32]         = {0};
+    std::string volumeSetIdentifierFile;
+    char        publisherIdentifier[32]         = {0};
+    std::string publisherIdentifierFile;
+    char        dataPreparerIdentifier[32]      = {0};
     std::string dataPreparerIdentifierFile;
-    char        applicationIdentifier[32]       = "CDProject";
-    std::string applicationIdentifierFile       = "";
-    char        copyrightFileIdentifier[13]     = "            ";
-    char        abstractFileIdentifier[13]      = "            ";
-    char        bibliographicFileIdentifier[13] = "            ";
-    std::string applicationUse                  = "";
-    std::string applicationUseFile              = "";
-    std::string directoryTree                   = "";
-    char        expirationDateAndTime[18]       = "2100010100000000\22";
+    char        applicationIdentifier[32]       = {0};
+    std::string applicationIdentifierFile;
+    char        copyrightFileIdentifier[12]     = {0};
+    char        abstractFileIdentifier[12]      = {0};
+    char        bibliographicFileIdentifier[12] = {0};
+    char        applicationUse[512]             = {0};
+    std::string applicationUseFile;
+    std::string directoryTree;
+    char        expirationDateAndTime[17]       = {0};
     
     ProgramOptions();
     
