@@ -125,7 +125,7 @@ void handleOptions(ProgramOptions &po, int opt, int *option_index)
             break;
         case APPLICATION_USE_FILE:
             po.applicationUseFile = optarg;
-            po.loadFile(po.applicationUse, 0, po.applicationUseFile.c_str());
+            po.loadFile(po.applicationUse, 512, po.applicationUseFile.c_str());
             break;
         case DIRECTORY_TREE:
             po.directoryTree = optarg;

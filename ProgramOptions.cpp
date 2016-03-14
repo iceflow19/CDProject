@@ -1,5 +1,9 @@
 #include "ProgramOptions.h"
 #include <cstring>
+#include <iostream>
+#include <iomanip>
+#include <fstream>
+
 #define BLANK_FILE_IDENTIFIER   "            "
 #define NO_SYSTEM_ID            "NO SYSTEM ID"
 #define NO_VOLUME_ID            "NO VOLUME ID"
@@ -11,7 +15,16 @@ using namespace std;
 
 void ProgramOptions::loadFile(char *field, int size, std::string filename)
 {
-    
+    char * buf = new char[size];
+    ifstream file;
+    file.open(filename.c_str(), ios_base::in | ios_base::binary);
+    if (file.is_open())
+    {
+        file.read(buf, size);
+    }
+    file.close();
+    strncpy(field, buf, size);
+    delete buf;
 }
 
 ProgramOptions::ProgramOptions(char user[32])
