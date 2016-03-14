@@ -1,5 +1,6 @@
 #include "OptionParser.h"
 #include <cstring>
+#include <unistd.h>
 
 using namespace std;
 
@@ -49,8 +50,11 @@ static struct option long_options[] = {
 };
 
 ProgramOptions * parse(int argc, char** argv) {
-    char user[32] = "troyko"; //TODO
-    ProgramOptions * po = new ProgramOptions();
+    char user[32] = {0};
+    int ret = getlogin_r(user, sizeof(user));
+    if (ret != 0)
+        abort();
+    ProgramOptions * po = new ProgramOptions(user);
 
     int opt;
     while (true)

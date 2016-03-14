@@ -31,7 +31,7 @@ public:
     std::string directoryTree;
     char        expirationDateAndTime[17]       = {0};
     
-    ProgramOptions();
+    ProgramOptions(char user[32]);
     
     void loadFile(char *field, int size, std::string filename);
 };

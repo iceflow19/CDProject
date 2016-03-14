@@ -14,10 +14,12 @@ void ProgramOptions::loadFile(char *field, int size, std::string filename)
     
 }
 
-ProgramOptions::ProgramOptions()
+ProgramOptions::ProgramOptions(char user[32])
 {
     strncpy(systemID, NO_SYSTEM_ID, sizeof(NO_SYSTEM_ID));
     strncpy(volumeID, NO_VOLUME_ID, sizeof(NO_VOLUME_ID));
+    strncpy(dataPreparerIdentifier, user, sizeof(user));
+    strncpy(publisherIdentifier, user, sizeof(user));
     strncpy(volumeSetIdentifier, NO_VOLUME_SET_ID, sizeof(NO_VOLUME_SET_ID));
     strncpy(applicationIdentifier, APP_IDENTIFIER, sizeof(APP_IDENTIFIER));
     strncpy(copyrightFileIdentifier, BLANK_FILE_IDENTIFIER, sizeof(BLANK_FILE_IDENTIFIER));
