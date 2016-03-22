@@ -8,7 +8,10 @@
       <itemPath>BothEndianShort.h</itemPath>
       <itemPath>DescriptorDateTime.h</itemPath>
       <itemPath>DirectoryRecord.h</itemPath>
+      <itemPath>LPathRecord.h</itemPath>
+      <itemPath>MPathRecord.h</itemPath>
       <itemPath>OptionParser.h</itemPath>
+      <itemPath>PathRecord.h</itemPath>
       <itemPath>ProgramOptions.h</itemPath>
       <itemPath>VolumeDescriptor.h</itemPath>
       <itemPath>globals.h</itemPath>
@@ -71,9 +74,15 @@
       </item>
       <item path="DirectoryRecord.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="LPathRecord.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="MPathRecord.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="OptionParser.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="OptionParser.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="PathRecord.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="ProgramOptions.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -124,9 +133,15 @@
       </item>
       <item path="DirectoryRecord.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="LPathRecord.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="MPathRecord.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="OptionParser.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="OptionParser.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="PathRecord.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="ProgramOptions.cpp" ex="false" tool="1" flavor2="0">
       </item>
