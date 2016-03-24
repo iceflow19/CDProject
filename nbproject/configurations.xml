@@ -13,6 +13,7 @@
       <itemPath>OptionParser.h</itemPath>
       <itemPath>PathRecord.h</itemPath>
       <itemPath>ProgramOptions.h</itemPath>
+      <itemPath>Utilities.h</itemPath>
       <itemPath>VolumeDescriptor.h</itemPath>
       <itemPath>globals.h</itemPath>
     </logicalFolder>
@@ -29,6 +30,7 @@
       <itemPath>DirectoryRecord.cpp</itemPath>
       <itemPath>OptionParser.cpp</itemPath>
       <itemPath>ProgramOptions.cpp</itemPath>
+      <itemPath>Utilities.cpp</itemPath>
       <itemPath>VolumeDescriptor.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
@@ -88,6 +90,10 @@
       </item>
       <item path="ProgramOptions.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Utilities.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Utilities.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="VolumeDescriptor.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="VolumeDescriptor.h" ex="false" tool="3" flavor2="0">
@@ -146,6 +152,10 @@
       <item path="ProgramOptions.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="ProgramOptions.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Utilities.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Utilities.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="VolumeDescriptor.cpp" ex="false" tool="1" flavor2="0">
       </item>

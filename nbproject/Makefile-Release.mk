@@ -41,6 +41,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/DirectoryRecord.o \
 	${OBJECTDIR}/OptionParser.o \
 	${OBJECTDIR}/ProgramOptions.o \
+	${OBJECTDIR}/Utilities.o \
 	${OBJECTDIR}/VolumeDescriptor.o \
 	${OBJECTDIR}/main.o
 
@@ -98,6 +99,11 @@ ${OBJECTDIR}/ProgramOptions.o: ProgramOptions.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/ProgramOptions.o ProgramOptions.cpp
+
+${OBJECTDIR}/Utilities.o: Utilities.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Utilities.o Utilities.cpp
 
 ${OBJECTDIR}/VolumeDescriptor.o: VolumeDescriptor.cpp 
 	${MKDIR} -p ${OBJECTDIR}
