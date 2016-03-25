@@ -15,7 +15,7 @@ VolumeDescriptor::VolumeDescriptor()
 {
     //VD
     vd.type = 255;
-    vd.id = {'C','D','0','0','1'};
+    strncpy(vd.id,"CD001",5);
     vd.version = 1;
 }
 
@@ -23,27 +23,27 @@ VolumeDescriptor::VolumeDescriptor(ProgramOptions* po, int pathTableSize)
 {
     //VD
     vd.type = 1;
-    vd.id = {'C','D','0','0','1'};
+    strncpy(vd.id,"CD001",5);
     vd.version = 1;
-    vd.volume_space_size = (uint64_t)0xAE0000000000000AE;
+    vd.volume_space_size = (uint64_t)0xAE000000000000AE;
     BothEndianShort setSize;
     setSize.setValue(1);
-    vd.volume_set_size = (uint32_t)(*setSize.getBytes());
+    memcpy(&vd.volume_set_size, setSize.getBytes(), sizeof(vd.volume_set_size));
     BothEndianShort sequenceNumber;
     sequenceNumber.setValue(1);
-    vd.volume_sequence_number = (uint32_t)(*sequenceNumber.getBytes());
+    memcpy(&vd.volume_sequence_number, sequenceNumber.getBytes(), sizeof(vd.volume_sequence_number));
     BothEndianShort logicalBlockSize;
     logicalBlockSize.setValue(2048);
-    vd.logical_block_size = (uint32_t)(*logicalBlockSize.getBytes());
+    memcpy(&vd.logical_block_size, logicalBlockSize.getBytes(), sizeof(vd.logical_block_size));
     vd.path_table_size = pathTableSize;
     vd.type_l_path_table = 18;
     vd.opt_type_l_path_table = 0;
     uint32_t mPathTable = 19;
-    swapEndian(mPathTable, sizeof(uint32_t));
+    swapEndian((char *)&mPathTable, sizeof(uint32_t));
     vd.type_m_path_table = mPathTable;
     vd.opt_type_m_path_table = 0;
     vd.file_structure_version = 1;
-    
+       
     strncpy(vd.system_id, po->systemID, sizeof(vd.system_id));
     strncpy(vd.volume_id, po->volumeID, sizeof(vd.volume_id));
     strncpy(vd.preparer_id, po->dataPreparerIdentifier, sizeof(vd.preparer_id));
@@ -53,7 +53,11 @@ VolumeDescriptor::VolumeDescriptor(ProgramOptions* po, int pathTableSize)
     strncpy(vd.copyright_file_id, po->copyrightFileIdentifier, sizeof(vd.copyright_file_id));
     strncpy(vd.abstract_file_id, po->abstractFileIdentifier, sizeof(vd.abstract_file_id));
     strncpy(vd.bibliographic_file_id, po->bibliographicFileIdentifier, sizeof(vd.bibliographic_file_id));
+    strncpy(vd.creation_date, getASCIIDateTime(), sizeof(vd.creation_date));
+    strncpy(vd.modification_date, getASCIIDateTime(), sizeof(vd.modification_date));
+    strncpy(vd.effective_date, getASCIIDateTime(), sizeof(vd.effective_date));
     strncpy(vd.expiration_date, po->expirationDateAndTime, sizeof(vd.expiration_date));
+
 }
 
 VolumeDescriptor::VolumeDescriptor(VolumeDescriptorS &vd)

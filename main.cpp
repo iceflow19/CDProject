@@ -5,15 +5,16 @@
 #include "Utilities.h"
 #include "BothEndianShort.h"
 #include "LPathRecord.h"
+#include "MPathRecord.h"
 #include <fstream>
 #include <iomanip>
 #include <iostream>
+#include <cstring>
 
 using namespace std;
 
-/*
- * 
- */
+void initRootRecord(DirectoryRecord &rcd);
+
 int main(int argc, char** argv)
 {
     ProgramOptions * po = parse(argc, argv);
@@ -24,18 +25,27 @@ int main(int argc, char** argv)
     {
         int pathTableSize;
         imgPath.seekp(16*2048, ios_base::beg);
-        VolumeDescriptor * pvd = new VolumeDescriptor(po);
+        pathTableSize += sizeof(PathRecordS) + 2;
+        LPathRecord * lpr = new LPathRecord(1, 20, 1, (char*)"\0");
+        MPathRecord * mpr = new MPathRecord(1, 20, 1, (char*)"\0");
+        VolumeDescriptor * pvd = new VolumeDescriptor(po, pathTableSize);
         DirectoryRecord * rootRecord = new  DirectoryRecord(1);
         initRootRecord(*rootRecord);
-        memcpy(pvd->vd.root_directory_record,*rootRecord,sizeof(DirectoryRecordS));
+        pvd->vd.root_directory_record = *rootRecord->dr;
         pvd->write(imgPath);
         VolumeDescriptor * tvd = new VolumeDescriptor();
         imgPath.seekp(17*2048, ios_base::beg);
         tvd->write(imgPath);
-        pathTableSize += sizeof(PathRecordS) + 1;
-        LPathRecord * lpr = new LPathRecord(1, 20, 1, 0, "\0");
-        
-        
+        imgPath.seekp(18*2048, ios_base::beg);
+        lpr->write(imgPath);
+        imgPath.seekp(19*2048, ios_base::beg);
+        mpr->write(imgPath);
+        imgPath.seekp(20*2048, ios_base::beg);
+        rootRecord->write(imgPath);
+        //Pad to the end
+        imgPath.seekp(21*2048, ios_base::beg);
+        char buf[1] = {'\0'};
+        imgPath.write(buf,1);
     }
     imgPath.close();
     return 0;
@@ -45,20 +55,20 @@ void initRootRecord(DirectoryRecord &rcd)
 {
     rcd.dr->length = 34;
     rcd.dr->xa_length = 0;
-    BothEndianInt extent = BothEndianInt();
-    extent.setValue(0);
-    rcd.dr->extent = *(extent.getBytes());
-    BothEndianInt size = BothEndianInt();
+    BothEndianInt extent;
+    extent.setValue(20);
+    memcpy(rcd.dr->extent, extent.getBytes(), sizeof(rcd.dr->extent));
+    BothEndianInt size;
     size.setValue(34);
-    rcd.dr->size = *(size.getBytes());
-    char[7] time;
-    getDateTimeNow(&time)
-    strncpy(rcd.dr->recording_time,time,7);
+    memcpy(rcd.dr->size, size.getBytes(), sizeof(rcd.dr->size));
+    char time[7];
+    getDateTimeNow(time);
+    memcpy(rcd.dr->recording_time,time,7);
     rcd.dr->file_flags = 2;
     rcd.dr->file_unit_size = 0;
     rcd.dr->interleave_gap = 0;
-    BothEndianShort sequenceNbr = BothEndianShort();
+    BothEndianShort sequenceNbr;
     sequenceNbr.setValue(1);
-    rcd.dr->volume_sequence_number = *(sequenceNbr.getBytes());
+    memcpy(&rcd.dr->volume_sequence_number, sequenceNbr.getBytes(), sizeof(rcd.dr->volume_sequence_number));
     rcd.dr->filename.len = 1;
 }

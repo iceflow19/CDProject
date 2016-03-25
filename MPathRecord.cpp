@@ -12,17 +12,17 @@
 
 MPathRecord::MPathRecord(int idLength, int extentLocation, int pdn, char * id)
 {
-    this->rcd = (PathRecordS*)malloc(sizeof(PathRecordS) + idLength);
-    this->rcd->length = idLength;
-    this->rcd->xa_length = 0;
-    this->rcd->extent = extentLocation;
-    this->rcd->parentDirectoryNumber = pdn;
-    memcpy(this->rcd->directoryID, id, idLength);
+    rcd = (PathRecordS*)malloc(sizeof(PathRecordS) + idLength);
+    rcd->length = idLength;
+    rcd->xa_length = 0;
+    rcd->extent = extentLocation;
+    rcd->parentDirectoryNumber = pdn;
+    memcpy(rcd->directoryID, id, idLength);
     
-    swapEndian(this->rcd->length, sizeof(this->rcd->length));
-    swapEndian(this->rcd->extent, sizeof(this->rcd->extent));
-    swapEndian(this->rcd->xa_length, sizeof(this->rcd->xa_length));
-    swapEndian(this->rcd->parentDirectoryNumber, sizeof(this->rcd->parentDirectoryNumber));
+    swapEndian((char *)&rcd->length, sizeof(rcd->length));
+    swapEndian((char *)&rcd->extent, sizeof(rcd->extent));
+    swapEndian((char *)&rcd->xa_length, sizeof(rcd->xa_length));
+    swapEndian((char *)&rcd->parentDirectoryNumber, sizeof(rcd->parentDirectoryNumber));
 }
 
 MPathRecord::MPathRecord(PathRecordS &rcd)
