@@ -6,14 +6,14 @@
 
 typedef struct DirectoryRecords {
     uint8_t     length;
-    uint8_t     xa_length;
+    uint8_t     xaLength;
     char        extent[8];
     char        size[8];
-    char        recording_time[7];
-    uint8_t     file_flags;
-    uint8_t     file_unit_size;
-    uint8_t     interleave_gap;
-    uint32_t    volume_sequence_number;
+    char        recordingTime[7];
+    uint8_t     fileFlags;
+    uint8_t     fileUnitSize;
+    uint8_t     interleaveGap;
+    uint32_t    volumeSequenceNumber;
     union {
         uint8_t len;
         char str[1];

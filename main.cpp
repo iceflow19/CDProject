@@ -40,7 +40,7 @@ int main(int argc, char** argv)
         //Create and write PVD
         VolumeDescriptor * pvd = new VolumeDescriptor(po, pathTableSize);
         initRootRecord(*rootRecord);
-        pvd->vd.root_directory_record = *rootRecord->dr; //Copy the record
+        pvd->vd.rootDirectoryRecord = *rootRecord->dr; //Copy the record
         imgPath.seekp(PVD_SECTOR * LOGICAL_SECTOR_SIZE, ios_base::beg);
         pvd->write(imgPath);
         
@@ -82,20 +82,20 @@ void initRootRecord(DirectoryRecord &rcd)
     extent.setValue(20);
     size.setValue(34);
     sequenceNumber.setValue(1);
-    getDateTimeNow(time);
+    getDateTime(time);
     
     //Fill in the default information
     rcd.dr->length = 34;
-    rcd.dr->xa_length = 0;
-    rcd.dr->file_flags = 2;
-    rcd.dr->file_unit_size = 0;
-    rcd.dr->interleave_gap = 0;
+    rcd.dr->xaLength = 0;
+    rcd.dr->fileFlags = 2;
+    rcd.dr->fileUnitSize = 0;
+    rcd.dr->interleaveGap = 0;
     rcd.dr->filename.len = 1;
     
     //We have to memcpy the byte arrays
-    memcpy(rcd.dr->recording_time,time,7);
-    memcpy(rcd.dr->extent, extent.getBytes(), sizeof(rcd.dr->extent));
-    memcpy(rcd.dr->size, size.getBytes(), sizeof(rcd.dr->size));
-    memcpy(&rcd.dr->volume_sequence_number, sequenceNumber.getBytes(),
-        sizeof(rcd.dr->volume_sequence_number));
+    memcpy(&rcd.dr->recordingTime,time,7);
+    memcpy(&rcd.dr->extent, extent.getBytes(), sizeof(rcd.dr->extent));
+    memcpy(&rcd.dr->size, size.getBytes(), sizeof(rcd.dr->size));
+    memcpy(&rcd.dr->volumeSequenceNumber, sequenceNumber.getBytes(),
+        sizeof(rcd.dr->volumeSequenceNumber));
 }

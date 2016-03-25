@@ -1,28 +1,22 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-#include "LPathRecord.h"
 #include <stdio.h>
 #include <string.h>
+#include "LPathRecord.h"
 
 
-LPathRecord::LPathRecord(int idLength, int extentLocation, int pdn, char * id)
+LPathRecord::LPathRecord(int idLength, int extentLocation, int parentDirNum, char * dirID)
 {
-    this->rcd = (PathRecordS*)malloc(sizeof(PathRecordS) + idLength);
-    this->rcd->length = idLength;
-    this->rcd->xa_length = 0;
-    this->rcd->extent = extentLocation;
-    this->rcd->parentDirectoryNumber = pdn;
-    memcpy(this->rcd->directoryID, id, idLength);
+    rcd = (PathRecordS*)malloc(sizeof(PathRecordS) + idLength);
+    rcd->length = idLength;
+    rcd->xaLength = 0;
+    rcd->extent = extentLocation;
+    rcd->parentDirectoryNumber = parentDirNum;
+    memcpy(rcd->directoryID, dirID, idLength);
 }
 
 LPathRecord::LPathRecord(PathRecordS &rcd)
 {
     this->rcd = (PathRecordS*)malloc(sizeof(PathRecordS) + rcd.length);
-    memcpy(&(this->rcd), &rcd, sizeof(PathRecordS) + rcd.length);
+    memcpy(this->rcd, &rcd, sizeof(PathRecordS) + rcd.length);
 }
 
 void LPathRecord::write(std::ofstream &image)

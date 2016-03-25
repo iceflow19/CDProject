@@ -1,10 +1,3 @@
-/* 
- * File:   ProgramOptions.h
- * Author: Thomas Royko
- *
- * Created on February 28, 2016, 10:09 PM
- */
-
 #include <string>
 
 #ifndef PROGRAMOPTIONS_H

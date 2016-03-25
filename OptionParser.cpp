@@ -1,6 +1,9 @@
-#include "OptionParser.h"
 #include <cstring>
 #include <unistd.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <getopt.h>
+#include "OptionParser.h"
 
 using namespace std;
 
@@ -49,6 +52,7 @@ static struct option longOptions[] = {
     {0, 0, 0, 0}
 };
 
+//Parses argv using getopt_long
 ProgramOptions * parse(int argc, char** argv) {
     char user[32] = {0};
     ProgramOptions * po;
@@ -69,6 +73,7 @@ ProgramOptions * parse(int argc, char** argv) {
     return po;
 }
 
+//Dispatches proper action depending on the option
 void handleOptions(ProgramOptions &po, int opt, int *option_index)
 {
     switch (opt) {

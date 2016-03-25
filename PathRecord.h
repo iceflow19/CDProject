@@ -6,7 +6,7 @@
 
 typedef struct PathRecords {
     uint8_t     length;
-    uint8_t     xa_length;
+    uint8_t     xaLength;
     uint32_t    extent;
     uint16_t    parentDirectoryNumber;
     char        directoryID[1];

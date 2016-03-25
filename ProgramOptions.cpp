@@ -8,6 +8,7 @@
 
 using namespace std;
 
+//Loads a file and sets an objects field to the content
 void ProgramOptions::loadFile(char *field, int size, std::string filename)
 {
     char * buf = new char[size];
@@ -22,6 +23,7 @@ void ProgramOptions::loadFile(char *field, int size, std::string filename)
     delete buf;
 }
 
+//Initialize members to their default values
 ProgramOptions::ProgramOptions(char user[32])
 {
     strncpy(systemID, NO_SYSTEM_ID, sizeof(NO_SYSTEM_ID));

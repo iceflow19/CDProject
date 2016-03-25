@@ -1,13 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-#include "Utilities.h"
 #include <time.h>
 #include <stdint.h>
 #include <stdio.h>
+#include "Utilities.h"
 
 void swapEndian(char * buf, int length)
 {
@@ -28,7 +22,7 @@ void swapEndian(char * buf, int length)
     }
 }
 
-void getDateTimeNow(char *bytes)
+void getDateTime(char *bytes)
 {
     time_t t = time(NULL);
     struct tm tm = *localtime(&t);
@@ -41,7 +35,7 @@ void getDateTimeNow(char *bytes)
     bytes[6] = 44;
 }
 
-char *getASCIIDateTime()
+char * getASCIIDateTime()
 {    
     time_t t = time(NULL);
     struct tm tm = *localtime(&t);

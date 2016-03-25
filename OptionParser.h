@@ -1,17 +1,7 @@
-/* 
- * File:   OptionParser.h
- * Author: Thomas Royko
- *
- * Created on February 28, 2016, 11:29 PM
- */
+#include "ProgramOptions.h"
 
 #ifndef OPTIONPARSER_H
 #define OPTIONPARSER_H
-
-#include <stdio.h>
-#include <stdlib.h>
-#include <getopt.h>
-#include "ProgramOptions.h"
 
 ProgramOptions * parse(int argc, char** argv);
 

@@ -9,7 +9,7 @@ class LPathRecord {
 public:
     PathRecordS * rcd;
     //Normal Constructor
-    LPathRecord(int idLength, int extentLocation, int pdn, char * id);
+    LPathRecord(int idLength, int extentLocation, int parentDirNum, char * dirID);
     //Copy Constructor
     LPathRecord(PathRecordS &rcd);
     void write(std::ofstream &image);
