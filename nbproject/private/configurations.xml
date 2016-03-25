@@ -26,10 +26,12 @@
       </nativedebugger>
       <runprofile version="9">
         <runcommandpicklist>
-          <runcommandpicklistitem>"${OUTPUT_PATH}"</runcommandpicklistitem>
           <runcommandpicklistitem>"${OUTPUT_PATH}" --system-id=Hello</runcommandpicklistitem>
+          <runcommandpicklistitem>"${OUTPUT_PATH}" --volume-id=Tom's Image</runcommandpicklistitem>
+          <runcommandpicklistitem>"${OUTPUT_PATH}" --volume-id="Tom's Image"</runcommandpicklistitem>
+          <runcommandpicklistitem>"${OUTPUT_PATH}"</runcommandpicklistitem>
         </runcommandpicklist>
-        <runcommand>"${OUTPUT_PATH}" --system-id=Hello</runcommand>
+        <runcommand>"${OUTPUT_PATH}"</runcommand>
         <rundir></rundir>
         <buildfirst>true</buildfirst>
         <terminal-type>0</terminal-type>
