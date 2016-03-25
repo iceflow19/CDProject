@@ -7,8 +7,8 @@
 typedef struct DirectoryRecords {
     uint8_t     length;
     uint8_t     xa_length;
-    uint64_t    extent;
-    uint64_t    size;
+    char        extent[8];
+    char        size[8];
     char        recording_time[7];
     uint8_t     file_flags;
     uint8_t     file_unit_size;

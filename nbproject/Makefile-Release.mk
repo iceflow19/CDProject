@@ -39,6 +39,8 @@ OBJECTFILES= \
 	${OBJECTDIR}/BothEndianShort.o \
 	${OBJECTDIR}/DescriptorDateTime.o \
 	${OBJECTDIR}/DirectoryRecord.o \
+	${OBJECTDIR}/LPathRecord.o \
+	${OBJECTDIR}/MPathRecord.o \
 	${OBJECTDIR}/OptionParser.o \
 	${OBJECTDIR}/ProgramOptions.o \
 	${OBJECTDIR}/Utilities.o \
@@ -89,6 +91,16 @@ ${OBJECTDIR}/DirectoryRecord.o: DirectoryRecord.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/DirectoryRecord.o DirectoryRecord.cpp
+
+${OBJECTDIR}/LPathRecord.o: LPathRecord.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/LPathRecord.o LPathRecord.cpp
+
+${OBJECTDIR}/MPathRecord.o: MPathRecord.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/MPathRecord.o MPathRecord.cpp
 
 ${OBJECTDIR}/OptionParser.o: OptionParser.cpp 
 	${MKDIR} -p ${OBJECTDIR}

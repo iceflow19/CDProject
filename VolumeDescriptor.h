@@ -58,7 +58,8 @@ class VolumeDescriptor {
 public:
     VolumeDescriptorS vd;
     //Normal Constructor
-    VolumeDescriptor(ProgramOptions * po);
+    VolumeDescriptor();
+    VolumeDescriptor(ProgramOptions * po, int pathTableSize);
     //Copy Constructor
     VolumeDescriptor(VolumeDescriptorS &vd);
     void write(std::ofstream &image);

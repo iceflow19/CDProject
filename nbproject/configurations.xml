@@ -28,6 +28,8 @@
       <itemPath>BothEndianShort.cpp</itemPath>
       <itemPath>DescriptorDateTime.cpp</itemPath>
       <itemPath>DirectoryRecord.cpp</itemPath>
+      <itemPath>LPathRecord.cpp</itemPath>
+      <itemPath>MPathRecord.cpp</itemPath>
       <itemPath>OptionParser.cpp</itemPath>
       <itemPath>ProgramOptions.cpp</itemPath>
       <itemPath>Utilities.cpp</itemPath>
@@ -76,7 +78,11 @@
       </item>
       <item path="DirectoryRecord.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="LPathRecord.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="LPathRecord.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="MPathRecord.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="MPathRecord.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -139,7 +145,11 @@
       </item>
       <item path="DirectoryRecord.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="LPathRecord.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="LPathRecord.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="MPathRecord.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="MPathRecord.h" ex="false" tool="3" flavor2="0">
       </item>

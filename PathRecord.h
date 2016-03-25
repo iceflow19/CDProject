@@ -7,12 +7,9 @@
 typedef struct PathRecords {
     uint8_t     length;
     uint8_t     xa_length;
-    uint64_t    extent;
-    uint64_t    parentDirectoryNumber;
-    union {
-        uint8_t len;
-        char str[1];
-    } directoryID;
+    uint32_t    extent;
+    uint16_t    parentDirectoryNumber;
+    char        directoryID[1];
 } __attribute__((packed)) PathRecordS;
 
 #endif /* PATH_RECORD_H */

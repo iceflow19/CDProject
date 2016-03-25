@@ -15,6 +15,7 @@
 #define UTILITIES_H
 
 void swapEndian(char &buf, int length);
+void getDateTimeNow(char * bytes);
 
 #endif /* UTILITIES_H */
 
