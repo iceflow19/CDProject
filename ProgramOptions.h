@@ -5,24 +5,24 @@
 
 class ProgramOptions {
 public:
-    char        systemID[32]                    = {0};
-    char        volumeID[32]                    = {0};
-    int         volumeSequenceNumber            = 1;
-    char        volumeSetIdentifier[32]         = {0};
+    char        systemID[32];
+    char        volumeID[32];
+    int         volumeSequenceNumber;
+    char        volumeSetIdentifier[32];
     std::string volumeSetIdentifierFile;
-    char        publisherIdentifier[32]         = {0};
+    char        publisherIdentifier[32];
     std::string publisherIdentifierFile;
-    char        dataPreparerIdentifier[32]      = {0};
+    char        dataPreparerIdentifier[32];
     std::string dataPreparerIdentifierFile;
-    char        applicationIdentifier[32]       = {0};
+    char        applicationIdentifier[32];
     std::string applicationIdentifierFile;
-    char        copyrightFileIdentifier[12]     = {0};
-    char        abstractFileIdentifier[12]      = {0};
-    char        bibliographicFileIdentifier[12] = {0};
-    char        applicationUse[512]             = {0};
+    char        copyrightFileIdentifier[12];
+    char        abstractFileIdentifier[12];
+    char        bibliographicFileIdentifier[12];
+    char        applicationUse[512];
     std::string applicationUseFile;
     std::string directoryTree;
-    char        expirationDateAndTime[17]       = {0};
+    char        expirationDateAndTime[17];
     
     ProgramOptions(char user[32]);
     

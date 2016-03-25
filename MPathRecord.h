@@ -8,9 +8,7 @@
 class MPathRecord {
 public:
     PathRecordS * rcd;
-    //Normal Constructor
     MPathRecord(int idLength, int extentLocation, int parentDirNum, char * dirID);
-    //Copy Constructor
     MPathRecord(PathRecordS &rcd);
     void write(std::ofstream &image);
 };

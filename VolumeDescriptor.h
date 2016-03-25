@@ -24,10 +24,10 @@ typedef struct VolumeDescriptors {
     uint32_t        optTypeMPathTable;
     DirectoryRecordS rootDirectoryRecord;
     char            rootDirectoryFilename;
-    char            volumeSetID[32];
-    char            publisherID[32];
-    char            preparerID[32];
-    char            applicationID[32];
+    char            volumeSetID[128];
+    char            publisherID[128];
+    char            preparerID[128];
+    char            applicationID[128];
     char            copyrightFileID[37];
     char            abstractFileID[37];
     char            bibliographicFileID[37];
@@ -44,10 +44,8 @@ typedef struct VolumeDescriptors {
 class VolumeDescriptor {
 public:
     VolumeDescriptorS vd;
-    //Normal Constructor
     VolumeDescriptor();
     VolumeDescriptor(ProgramOptions * po, int pathTableSize);
-    //Copy Constructor
     VolumeDescriptor(VolumeDescriptorS &vd);
     void write(std::ofstream &image);
 };

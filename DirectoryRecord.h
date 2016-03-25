@@ -23,9 +23,7 @@ typedef struct DirectoryRecords {
 class DirectoryRecord {
 public:
     DirectoryRecordS * dr;
-    //Normal Constructor
     DirectoryRecord(int fileNameSize);
-    //Copy Constructor
     DirectoryRecord(DirectoryRecordS &dr);
     void write(std::ofstream &image);
 };

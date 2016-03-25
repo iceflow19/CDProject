@@ -78,50 +78,54 @@ void handleOptions(ProgramOptions &po, int opt, int *option_index)
 {
     switch (opt) {
         case SYSTEM_ID:
-            strncpy(po.systemID, optarg, sizeof(po.systemID));
+            memset(po.systemID, 0x20, sizeof(po.systemID));
+            strncpy(po.systemID, optarg, strlen(optarg));
             break;
         case VOLUME_ID:
-            strncpy(po.volumeID, optarg, sizeof(po.volumeID));
+            memset(po.volumeID, 0x20, sizeof(po.volumeID));
+            strncpy(po.volumeID, optarg, strlen(optarg));
             break;
         case VOLUME_SEQUENCE_NBR:
             po.volumeSequenceNumber = atoi(optarg);
             break;
         case VOLUME_SET_IDENTIFIER:
-            strncpy(po.volumeSetIdentifier, optarg, sizeof(po.volumeSetIdentifier));
+            memset(po.volumeSetIdentifier, 0x20, sizeof(po.volumeSetIdentifier));
+            strncpy(po.volumeSetIdentifier, optarg, strlen(optarg));
             break;
         case VOLUME_SET_IDENTIFIER_FILE:
             po.volumeSetIdentifierFile = optarg;
             po.loadFile(po.volumeSetIdentifier, sizeof(po.volumeSetIdentifier), po.volumeSetIdentifierFile);
             break;
         case PUBLISHER_IDENTIFIER:
-            strncpy(po.publisherIdentifier, optarg, sizeof(po.publisherIdentifier));
+            strncpy(po.publisherIdentifier, optarg, strlen(optarg));
             break;
         case PUBLISHER_IDENTIFIER_FILE:
             po.publisherIdentifierFile = optarg;
             po.loadFile(po.publisherIdentifier, sizeof(po.publisherIdentifier), po.publisherIdentifierFile);
             break;
         case DATA_PREPARER_IDENTIFIER:
-            strncpy(po.dataPreparerIdentifier, optarg, sizeof(po.dataPreparerIdentifier));
+            strncpy(po.dataPreparerIdentifier, optarg, strlen(optarg));
             break;
         case DATA_PREPARER_IDENTIFIER_FILE:
             po.dataPreparerIdentifierFile = optarg;
             po.loadFile(po.dataPreparerIdentifier, sizeof(po.dataPreparerIdentifier), po.dataPreparerIdentifierFile.c_str());
             break;
         case APPLICATION_IDENTIFIER:
-            strncpy(po.applicationIdentifier, optarg, sizeof(po.applicationIdentifier));
+            memset(po.applicationIdentifier, 0x20, sizeof(po.applicationIdentifier));
+            strncpy(po.applicationIdentifier, optarg, strlen(optarg));
             break;
         case APPLICATION_IDENTIFIER_FILE:
             po.applicationIdentifierFile = optarg;
             po.loadFile(po.applicationIdentifier, sizeof(po.applicationIdentifier), po.applicationIdentifierFile.c_str());
             break;
         case COPYRIGHT_FILE_IDENTIFIER:
-            strncpy(po.copyrightFileIdentifier, optarg, sizeof(po.copyrightFileIdentifier));
+            strncpy(po.copyrightFileIdentifier, optarg, strlen(optarg));
             break;
         case ABSTRACT_FILE_IDENTIFIER:
-            strncpy(po.abstractFileIdentifier, optarg, sizeof(po.abstractFileIdentifier));
+            strncpy(po.abstractFileIdentifier, optarg, strlen(optarg));
             break;
         case BIBLIOGRAPHIC_FILE_IDENTIFIER:
-            strncpy(po.bibliographicFileIdentifier, optarg, sizeof(po.bibliographicFileIdentifier));
+            strncpy(po.bibliographicFileIdentifier, optarg, strlen(optarg));
             break;
         case APPLICATION_USE:
             strncpy(po.applicationUse, optarg, sizeof(po.applicationUse));

@@ -6,6 +6,7 @@
 #include "Utilities.h"
 #include "globals.h"
 
+//Constructor for a Terminating Volume Descriptor
 VolumeDescriptor::VolumeDescriptor()
 {
     vd.type = TVD_TYPE;
@@ -42,17 +43,28 @@ VolumeDescriptor::VolumeDescriptor(ProgramOptions* po, int pathTableSize)
     memcpy(&vd.volumeSequenceNumber, sequenceNumber.getBytes(), sizeof(vd.volumeSequenceNumber));
     memcpy(&vd.logicalBlockSize, logicalBlockSize.getBytes(), sizeof(vd.logicalBlockSize));
     
+    //Memset the text fields
+    memset(vd.systemID, 0x20, sizeof(vd.systemID));
+    memset(vd.volumeID, 0x20, sizeof(vd.volumeID));
+    memset(vd.preparerID, 0x20, sizeof(vd.preparerID));
+    memset(vd.publisherID, 0x20, sizeof(vd.publisherID));
+    memset(vd.volumeSetID, 0x20, sizeof(vd.volumeSetID));
+    memset(vd.applicationID, 0x20, sizeof(vd.copyrightFileID));
+    memset(vd.copyrightFileID, 0x20, sizeof(vd.copyrightFileID));
+    memset(vd.abstractFileID, 0x20, sizeof(vd.abstractFileID));
+    memset(vd.bibliographicFileID, 0x20, sizeof(vd.bibliographicFileID));
+    
     //Initialize the remaining char arrays in the struct
     strncpy(vd.id, VD_ID, sizeof(vd.id));
-    strncpy(vd.systemID, po->systemID, sizeof(vd.systemID));
-    strncpy(vd.volumeID, po->volumeID, sizeof(vd.volumeID));
-    strncpy(vd.preparerID, po->dataPreparerIdentifier, sizeof(vd.preparerID));
-    strncpy(vd.publisherID, po->publisherIdentifier, sizeof(vd.publisherID));
-    strncpy(vd.volumeSetID, po->volumeSetIdentifier, sizeof(vd.volumeSetID));
-    strncpy(vd.applicationID, po->applicationIdentifier, sizeof(vd.copyrightFileID));
-    strncpy(vd.copyrightFileID, po->copyrightFileIdentifier, sizeof(vd.copyrightFileID));
-    strncpy(vd.abstractFileID, po->abstractFileIdentifier, sizeof(vd.abstractFileID));
-    strncpy(vd.bibliographicFileID, po->bibliographicFileIdentifier, sizeof(vd.bibliographicFileID));
+    strncpy(vd.systemID, po->systemID, sizeof(po->systemID));
+    strncpy(vd.volumeID, po->volumeID, sizeof(po->volumeID));
+    strncpy(vd.preparerID, po->dataPreparerIdentifier, sizeof(po->dataPreparerIdentifier));
+    strncpy(vd.publisherID, po->publisherIdentifier, sizeof(po->publisherIdentifier));
+    strncpy(vd.volumeSetID, po->volumeSetIdentifier, sizeof(po->volumeSetIdentifier));
+    strncpy(vd.applicationID, po->applicationIdentifier, sizeof(po->applicationIdentifier));
+    strncpy(vd.copyrightFileID, po->copyrightFileIdentifier, sizeof(po->copyrightFileIdentifier));
+    strncpy(vd.abstractFileID, po->abstractFileIdentifier, sizeof(po->abstractFileIdentifier));
+    strncpy(vd.bibliographicFileID, po->bibliographicFileIdentifier, sizeof(po->bibliographicFileIdentifier));
     strncpy(vd.creationDate, getASCIIDateTime(), sizeof(vd.creationDate));
     strncpy(vd.modificationDate, getASCIIDateTime(), sizeof(vd.modificationDate));
     strncpy(vd.effectiveDate, getASCIIDateTime(), sizeof(vd.effectiveDate));
