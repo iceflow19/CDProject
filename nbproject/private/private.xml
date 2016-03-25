@@ -4,17 +4,13 @@
         <activeConfTypeElem>1</activeConfTypeElem>
         <activeConfIndexElem>0</activeConfIndexElem>
     </data>
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1">
-        <file>
-            <url>DirectoryRecord.h</url>
-            <bookmark id="1">
-                <name/>
-                <line>11</line>
-                <key/>
-            </bookmark>
-        </file>
-    </editor-bookmarks>
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/home/thomas/NetBeansProjects/CDProject/globals.h</file>
+            <file>file:/home/thomas/NetBeansProjects/CDProject/main.cpp</file>
+            <file>file:/home/thomas/NetBeansProjects/CDProject/LPathRecord.h</file>
+            <file>file:/home/thomas/NetBeansProjects/CDProject/ProgramOptions.cpp</file>
+        </group>
     </open-files>
 </project-private>

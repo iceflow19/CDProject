@@ -1,15 +1,10 @@
-#include "ProgramOptions.h"
 #include <cstring>
 #include <iostream>
 #include <iomanip>
 #include <fstream>
 
-#define BLANK_FILE_IDENTIFIER   "            "
-#define NO_SYSTEM_ID            "NO SYSTEM ID"
-#define NO_VOLUME_ID            "NO VOLUME ID"
-#define NO_VOLUME_SET_ID        "NO-VOLUME-SET-ID"
-#define APP_IDENTIFIER          "CDProject"
-#define DEFAULT_DATE            "2100010100000000\22"
+#include "ProgramOptions.h"
+#include "globals.h"
 
 using namespace std;
 

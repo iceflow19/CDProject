@@ -6,7 +6,6 @@
                    projectFiles="true">
       <itemPath>BothEndianInt.h</itemPath>
       <itemPath>BothEndianShort.h</itemPath>
-      <itemPath>DescriptorDateTime.h</itemPath>
       <itemPath>DirectoryRecord.h</itemPath>
       <itemPath>LPathRecord.h</itemPath>
       <itemPath>MPathRecord.h</itemPath>
@@ -26,7 +25,6 @@
                    projectFiles="true">
       <itemPath>BothEndianInt.cpp</itemPath>
       <itemPath>BothEndianShort.cpp</itemPath>
-      <itemPath>DescriptorDateTime.cpp</itemPath>
       <itemPath>DirectoryRecord.cpp</itemPath>
       <itemPath>LPathRecord.cpp</itemPath>
       <itemPath>MPathRecord.cpp</itemPath>
@@ -69,10 +67,6 @@
       <item path="BothEndianShort.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="BothEndianShort.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="DescriptorDateTime.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="DescriptorDateTime.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="DirectoryRecord.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -136,10 +130,6 @@
       <item path="BothEndianShort.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="BothEndianShort.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="DescriptorDateTime.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="DescriptorDateTime.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="DirectoryRecord.cpp" ex="false" tool="1" flavor2="0">
       </item>

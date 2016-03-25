@@ -37,7 +37,6 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 OBJECTFILES= \
 	${OBJECTDIR}/BothEndianInt.o \
 	${OBJECTDIR}/BothEndianShort.o \
-	${OBJECTDIR}/DescriptorDateTime.o \
 	${OBJECTDIR}/DirectoryRecord.o \
 	${OBJECTDIR}/LPathRecord.o \
 	${OBJECTDIR}/MPathRecord.o \
@@ -81,11 +80,6 @@ ${OBJECTDIR}/BothEndianShort.o: BothEndianShort.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/BothEndianShort.o BothEndianShort.cpp
-
-${OBJECTDIR}/DescriptorDateTime.o: DescriptorDateTime.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/DescriptorDateTime.o DescriptorDateTime.cpp
 
 ${OBJECTDIR}/DirectoryRecord.o: DirectoryRecord.cpp 
 	${MKDIR} -p ${OBJECTDIR}

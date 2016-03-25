@@ -27,7 +27,7 @@ enum opts {
     EXPIRATION_DATE_AND_TIME
 };
 
-static struct option long_options[] = {
+static struct option longOptions[] = {
     {"system-id", required_argument, 0, SYSTEM_ID},
     {"volume-id", required_argument, 0, VOLUME_ID},
     {"volume-sequence-nbr", required_argument, 0, VOLUME_SEQUENCE_NBR},
@@ -51,21 +51,19 @@ static struct option long_options[] = {
 
 ProgramOptions * parse(int argc, char** argv) {
     char user[32] = {0};
-    int ret = getlogin_r(user, sizeof(user));
-    if (ret != 0)
-        abort();
-    ProgramOptions * po = new ProgramOptions(user);
-
+    ProgramOptions * po;
     int opt;
+    
+    getlogin_r(user, sizeof(user));
+    po = new ProgramOptions(user);
     while (true)
     {
-        int option_index = 0;
+        int optionIndex = 0;
         opt = getopt_long(argc, argv, "a:b:c:d:e:f:g:h:i:j:k:l:m:n:o:p:q:r",
-                long_options, &option_index);
-
+                longOptions, &optionIndex);
         if (opt == -1)
             break;
-        handleOptions(*po, opt, &option_index);
+        handleOptions(*po, opt, &optionIndex);
     }
 
     return po;
@@ -88,28 +86,28 @@ void handleOptions(ProgramOptions &po, int opt, int *option_index)
             break;
         case VOLUME_SET_IDENTIFIER_FILE:
             po.volumeSetIdentifierFile = optarg;
-            po.loadFile(po.volumeSetIdentifier, 32, po.volumeSetIdentifierFile);
+            po.loadFile(po.volumeSetIdentifier, sizeof(po.volumeSetIdentifier), po.volumeSetIdentifierFile);
             break;
         case PUBLISHER_IDENTIFIER:
             strncpy(po.publisherIdentifier, optarg, sizeof(po.publisherIdentifier));
             break;
         case PUBLISHER_IDENTIFIER_FILE:
             po.publisherIdentifierFile = optarg;
-            po.loadFile(po.publisherIdentifier, 32, po.publisherIdentifierFile);
+            po.loadFile(po.publisherIdentifier, sizeof(po.publisherIdentifier), po.publisherIdentifierFile);
             break;
         case DATA_PREPARER_IDENTIFIER:
             strncpy(po.dataPreparerIdentifier, optarg, sizeof(po.dataPreparerIdentifier));
             break;
         case DATA_PREPARER_IDENTIFIER_FILE:
             po.dataPreparerIdentifierFile = optarg;
-            po.loadFile(po.dataPreparerIdentifier, 32, po.dataPreparerIdentifierFile.c_str());
+            po.loadFile(po.dataPreparerIdentifier, sizeof(po.dataPreparerIdentifier), po.dataPreparerIdentifierFile.c_str());
             break;
         case APPLICATION_IDENTIFIER:
             strncpy(po.applicationIdentifier, optarg, sizeof(po.applicationIdentifier));
             break;
         case APPLICATION_IDENTIFIER_FILE:
             po.applicationIdentifierFile = optarg;
-            po.loadFile(po.applicationIdentifier, 32, po.applicationIdentifierFile.c_str());
+            po.loadFile(po.applicationIdentifier, sizeof(po.applicationIdentifier), po.applicationIdentifierFile.c_str());
             break;
         case COPYRIGHT_FILE_IDENTIFIER:
             strncpy(po.copyrightFileIdentifier, optarg, sizeof(po.copyrightFileIdentifier));
@@ -125,7 +123,7 @@ void handleOptions(ProgramOptions &po, int opt, int *option_index)
             break;
         case APPLICATION_USE_FILE:
             po.applicationUseFile = optarg;
-            po.loadFile(po.applicationUse, 512, po.applicationUseFile.c_str());
+            po.loadFile(po.applicationUse, sizeof(po.applicationUse), po.applicationUseFile.c_str());
             break;
         case DIRECTORY_TREE:
             po.directoryTree = optarg;
