@@ -6,15 +6,13 @@
                    projectFiles="true">
       <itemPath>BothEndianInt.h</itemPath>
       <itemPath>BothEndianShort.h</itemPath>
-      <itemPath>DirectoryRecord.h</itemPath>
-      <itemPath>LPathRecord.h</itemPath>
-      <itemPath>MPathRecord.h</itemPath>
-      <itemPath>OptionParser.h</itemPath>
-      <itemPath>PathRecord.h</itemPath>
-      <itemPath>ProgramOptions.h</itemPath>
-      <itemPath>Utilities.h</itemPath>
-      <itemPath>VolumeDescriptor.h</itemPath>
-      <itemPath>globals.h</itemPath>
+      <itemPath>DirectoryRec.h</itemPath>
+      <itemPath>LPathRec.h</itemPath>
+      <itemPath>MPathRec.h</itemPath>
+      <itemPath>OptParse.h</itemPath>
+      <itemPath>PathRec.h</itemPath>
+      <itemPath>ProgOpts.h</itemPath>
+      <itemPath>VolDesc.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -25,13 +23,12 @@
                    projectFiles="true">
       <itemPath>BothEndianInt.cpp</itemPath>
       <itemPath>BothEndianShort.cpp</itemPath>
-      <itemPath>DirectoryRecord.cpp</itemPath>
-      <itemPath>LPathRecord.cpp</itemPath>
-      <itemPath>MPathRecord.cpp</itemPath>
-      <itemPath>OptionParser.cpp</itemPath>
-      <itemPath>ProgramOptions.cpp</itemPath>
-      <itemPath>Utilities.cpp</itemPath>
-      <itemPath>VolumeDescriptor.cpp</itemPath>
+      <itemPath>DirectoryRec.cpp</itemPath>
+      <itemPath>LPathRec.cpp</itemPath>
+      <itemPath>MPathRec.cpp</itemPath>
+      <itemPath>OptParse.cpp</itemPath>
+      <itemPath>ProgOpts.cpp</itemPath>
+      <itemPath>VolDesc.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -68,37 +65,31 @@
       </item>
       <item path="BothEndianShort.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="DirectoryRecord.cpp" ex="false" tool="1" flavor2="0">
+      <item path="DirectoryRec.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="DirectoryRecord.h" ex="false" tool="3" flavor2="0">
+      <item path="DirectoryRec.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="LPathRecord.cpp" ex="false" tool="1" flavor2="0">
+      <item path="LPathRec.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="LPathRecord.h" ex="false" tool="3" flavor2="0">
+      <item path="LPathRec.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="MPathRecord.cpp" ex="false" tool="1" flavor2="0">
+      <item path="MPathRec.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="MPathRecord.h" ex="false" tool="3" flavor2="0">
+      <item path="MPathRec.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="OptionParser.cpp" ex="false" tool="1" flavor2="0">
+      <item path="OptParse.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="OptionParser.h" ex="false" tool="3" flavor2="0">
+      <item path="OptParse.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="PathRecord.h" ex="false" tool="3" flavor2="0">
+      <item path="PathRec.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="ProgramOptions.cpp" ex="false" tool="1" flavor2="0">
+      <item path="ProgOpts.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="ProgramOptions.h" ex="false" tool="3" flavor2="0">
+      <item path="ProgOpts.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="Utilities.cpp" ex="false" tool="1" flavor2="0">
+      <item path="VolDesc.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="Utilities.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="VolumeDescriptor.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="VolumeDescriptor.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="globals.h" ex="false" tool="3" flavor2="0">
+      <item path="VolDesc.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -131,37 +122,31 @@
       </item>
       <item path="BothEndianShort.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="DirectoryRecord.cpp" ex="false" tool="1" flavor2="0">
+      <item path="DirectoryRec.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="DirectoryRecord.h" ex="false" tool="3" flavor2="0">
+      <item path="DirectoryRec.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="LPathRecord.cpp" ex="false" tool="1" flavor2="0">
+      <item path="LPathRec.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="LPathRecord.h" ex="false" tool="3" flavor2="0">
+      <item path="LPathRec.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="MPathRecord.cpp" ex="false" tool="1" flavor2="0">
+      <item path="MPathRec.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="MPathRecord.h" ex="false" tool="3" flavor2="0">
+      <item path="MPathRec.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="OptionParser.cpp" ex="false" tool="1" flavor2="0">
+      <item path="OptParse.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="OptionParser.h" ex="false" tool="3" flavor2="0">
+      <item path="OptParse.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="PathRecord.h" ex="false" tool="3" flavor2="0">
+      <item path="PathRec.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="ProgramOptions.cpp" ex="false" tool="1" flavor2="0">
+      <item path="ProgOpts.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="ProgramOptions.h" ex="false" tool="3" flavor2="0">
+      <item path="ProgOpts.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="Utilities.cpp" ex="false" tool="1" flavor2="0">
+      <item path="VolDesc.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="Utilities.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="VolumeDescriptor.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="VolumeDescriptor.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="globals.h" ex="false" tool="3" flavor2="0">
+      <item path="VolDesc.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>

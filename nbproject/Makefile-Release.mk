@@ -37,13 +37,12 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 OBJECTFILES= \
 	${OBJECTDIR}/BothEndianInt.o \
 	${OBJECTDIR}/BothEndianShort.o \
-	${OBJECTDIR}/DirectoryRecord.o \
-	${OBJECTDIR}/LPathRecord.o \
-	${OBJECTDIR}/MPathRecord.o \
-	${OBJECTDIR}/OptionParser.o \
-	${OBJECTDIR}/ProgramOptions.o \
-	${OBJECTDIR}/Utilities.o \
-	${OBJECTDIR}/VolumeDescriptor.o \
+	${OBJECTDIR}/DirectoryRec.o \
+	${OBJECTDIR}/LPathRec.o \
+	${OBJECTDIR}/MPathRec.o \
+	${OBJECTDIR}/OptParse.o \
+	${OBJECTDIR}/ProgOpts.o \
+	${OBJECTDIR}/VolDesc.o \
 	${OBJECTDIR}/main.o
 
 
@@ -81,40 +80,35 @@ ${OBJECTDIR}/BothEndianShort.o: BothEndianShort.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/BothEndianShort.o BothEndianShort.cpp
 
-${OBJECTDIR}/DirectoryRecord.o: DirectoryRecord.cpp 
+${OBJECTDIR}/DirectoryRec.o: DirectoryRec.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/DirectoryRecord.o DirectoryRecord.cpp
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/DirectoryRec.o DirectoryRec.cpp
 
-${OBJECTDIR}/LPathRecord.o: LPathRecord.cpp 
+${OBJECTDIR}/LPathRec.o: LPathRec.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/LPathRecord.o LPathRecord.cpp
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/LPathRec.o LPathRec.cpp
 
-${OBJECTDIR}/MPathRecord.o: MPathRecord.cpp 
+${OBJECTDIR}/MPathRec.o: MPathRec.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/MPathRecord.o MPathRecord.cpp
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/MPathRec.o MPathRec.cpp
 
-${OBJECTDIR}/OptionParser.o: OptionParser.cpp 
+${OBJECTDIR}/OptParse.o: OptParse.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/OptionParser.o OptionParser.cpp
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/OptParse.o OptParse.cpp
 
-${OBJECTDIR}/ProgramOptions.o: ProgramOptions.cpp 
+${OBJECTDIR}/ProgOpts.o: ProgOpts.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/ProgramOptions.o ProgramOptions.cpp
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/ProgOpts.o ProgOpts.cpp
 
-${OBJECTDIR}/Utilities.o: Utilities.cpp 
+${OBJECTDIR}/VolDesc.o: VolDesc.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Utilities.o Utilities.cpp
-
-${OBJECTDIR}/VolumeDescriptor.o: VolumeDescriptor.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/VolumeDescriptor.o VolumeDescriptor.cpp
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/VolDesc.o VolDesc.cpp
 
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}

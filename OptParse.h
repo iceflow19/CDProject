@@ -1,9 +1,9 @@
-#include "ProgramOptions.h"
+#include "ProgOpts.h"
 
 #ifndef OPTIONPARSER_H
 #define OPTIONPARSER_H
 
-ProgramOptions * parse(int argc, char** argv);
+ProgOpts * parse(int argc, char** argv);
 
 #endif /* OPTIONPARSER_H */
 
