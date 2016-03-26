@@ -9,19 +9,19 @@ CND_DISTDIR=dist
 # Debug configuration
 CND_PLATFORM_Debug=GNU-Linux
 CND_ARTIFACT_DIR_Debug=dist/Debug/GNU-Linux
-CND_ARTIFACT_NAME_Debug=cdproject
-CND_ARTIFACT_PATH_Debug=dist/Debug/GNU-Linux/cdproject
+CND_ARTIFACT_NAME_Debug=isowriter
+CND_ARTIFACT_PATH_Debug=dist/Debug/GNU-Linux/isowriter
 CND_PACKAGE_DIR_Debug=dist/Debug/GNU-Linux/package
-CND_PACKAGE_NAME_Debug=cdproject.tar
-CND_PACKAGE_PATH_Debug=dist/Debug/GNU-Linux/package/cdproject.tar
+CND_PACKAGE_NAME_Debug=isowriter.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/GNU-Linux/package/isowriter.tar
 # Release configuration
 CND_PLATFORM_Release=GNU-Linux
 CND_ARTIFACT_DIR_Release=dist/Release/GNU-Linux
-CND_ARTIFACT_NAME_Release=cdproject
-CND_ARTIFACT_PATH_Release=dist/Release/GNU-Linux/cdproject
+CND_ARTIFACT_NAME_Release=isowriter
+CND_ARTIFACT_PATH_Release=dist/Release/GNU-Linux/isowriter
 CND_PACKAGE_DIR_Release=dist/Release/GNU-Linux/package
-CND_PACKAGE_NAME_Release=cdproject.tar
-CND_PACKAGE_PATH_Release=dist/Release/GNU-Linux/package/cdproject.tar
+CND_PACKAGE_NAME_Release=isowriter.tar
+CND_PACKAGE_PATH_Release=dist/Release/GNU-Linux/package/isowriter.tar
 #
 # include compiler specific variables
 #
