@@ -8,6 +8,7 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <fcntl.h>
+#include <unistd.h>
 
 #include "VolumeDescriptor.h"
 #include "LPathRecord.h"
@@ -26,6 +27,7 @@ int getDirectorySize(ProgramOptions* po);
 int createDirectory(ofstream &imgPath, ProgramOptions* po, DirectoryRecord * rootRecord);
 void writeRecord(DirectoryRecord &rcd, ofstream &imgPath,
         struct dirent *direcRent, int &extentSector, string path);
+void writeIdentifierFile(DirectoryRecord &rcd,ofstream &imgPath,string filename,int &extentSector);
 
 int main(int argc, char** argv) {
     //Get the command line options
@@ -138,10 +140,8 @@ int createDirectory(
     int dirTreeSize = getDirectorySize(po);
     int extentSector = ROOT_RECORD_SECTOR + ceil(dirTreeSize / 2048.0);
     
-    //Create Root Record and write it
+    //Create Root Record
     initRootRecord(*rootRecord, dirTreeSize);
-    imgPath.seekp(currentLocation, ios_base::beg);
-    rootRecord->write(imgPath);
     currentLocation += rootRecord->dr->length;
     
     //Create parent record and write it
@@ -174,7 +174,53 @@ int createDirectory(
         closedir(direc);
     }
     
-    //Add the bullshit files
+    //Add the identifier files
+    string idFile;
+    int trimEnd;
+    BothEndianInt rootSize(rootRecord->dr->size);
+    int currentRootSize = rootSize.getValue();
+    idFile = string(po->copyrightFileIdentifier,12);
+    if (!(idFile == BLANK_FILE_IDENTIFIER)){
+        trimEnd = idFile.find_last_not_of(" ") + 1;
+        idFile = idFile.substr(0, trimEnd);
+        currentRecord = new DirectoryRecord(idFile.length()+2);
+        writeIdentifierFile(*currentRecord,imgPath,idFile,extentSector);
+        imgPath.seekp(currentLocation, ios_base::beg);
+        currentRecord->write(imgPath);
+        currentLocation += currentRecord->dr->length;
+        currentRootSize += currentRecord->dr->length;
+        delete currentRecord;
+    }
+    idFile = string(po->abstractFileIdentifier,12);
+    if (!(idFile == BLANK_FILE_IDENTIFIER)){
+        trimEnd = idFile.find_last_not_of(" ") + 1;
+        idFile = idFile.substr(0, trimEnd);
+        currentRecord = new DirectoryRecord(idFile.length()+2);
+        writeIdentifierFile(*currentRecord,imgPath,idFile,extentSector);
+        imgPath.seekp(currentLocation, ios_base::beg);
+        currentRecord->write(imgPath);
+        currentLocation += currentRecord->dr->length;
+        currentRootSize += currentRecord->dr->length;
+        delete currentRecord;
+    }
+    idFile = string(po->bibliographicFileIdentifier,12);
+    if (!(idFile == BLANK_FILE_IDENTIFIER)){
+        trimEnd = idFile.find_last_not_of(" ") + 1;
+        idFile = idFile.substr(0, trimEnd);
+        currentRecord = new DirectoryRecord(idFile.length()+2);
+        writeIdentifierFile(*currentRecord,imgPath,idFile,extentSector);
+        imgPath.seekp(currentLocation, ios_base::beg);
+        currentRecord->write(imgPath);
+        currentLocation += currentRecord->dr->length;
+        currentRootSize += currentRecord->dr->length;
+        delete currentRecord;
+    }
+    rootSize.setValue(currentRootSize);
+    memcpy(rootRecord->dr->size, rootSize.getBytes(), sizeof (rootRecord->dr->size));
+    
+    //Write the root record
+    imgPath.seekp(LOGICAL_SECTOR_SIZE * ROOT_RECORD_SECTOR, ios_base::beg);
+    rootRecord->write(imgPath);
     
     return extentSector;
 }
@@ -228,6 +274,63 @@ void writeRecord(
     imgPath.seekp(extentSector * LOGICAL_SECTOR_SIZE, ios_base::beg);
     
     recordFile.open (path, ifstream::binary);
+    if (recordFile.is_open()){
+        while ((amt = recordFile.readsome(buffer,1000)) > 0){
+          imgPath.write(buffer,amt);
+        }
+        recordFile.close();
+    }
+    
+    extentSector += ceil(st.st_size / 2048.0);
+}
+
+void writeIdentifierFile(
+    DirectoryRecord &rcd,
+    ofstream &imgPath,
+    string filename,
+    int &extentSector
+){
+    BothEndianInt extent, size;
+    BothEndianShort sequenceNumber;
+    char time[7];
+    struct stat st;
+    int status, amt;
+    char buffer[1000];
+    int fildes;
+    
+    fildes = open(filename.c_str(), O_RDWR);
+    status = fstat(fildes, &st);
+
+    //Set the bothendians
+    extent.setValue(extentSector);
+    size.setValue(st.st_size);
+    sequenceNumber.setValue(1);
+    getDateTime(time);
+
+    //Fill in the default information
+    rcd.dr->xaLength = 0;
+    rcd.dr->fileFlags = 0;
+    rcd.dr->fileUnitSize = 0;
+    rcd.dr->interleaveGap = 0;
+    rcd.dr->filename.len = filename.length() + 2;
+
+    //We have to memcpy the byte arrays
+    memcpy(&rcd.dr->recordingTime, time, 7);
+    memcpy(&rcd.dr->extent, extent.getBytes(), sizeof (rcd.dr->extent));
+    memcpy(&rcd.dr->size, size.getBytes(), sizeof (rcd.dr->size));
+    memcpy(&rcd.dr->volumeSequenceNumber, sequenceNumber.getBytes(),
+            sizeof (rcd.dr->volumeSequenceNumber));
+    
+    char * ptr = (rcd.dr->filename.str) + sizeof(char);
+    memcpy(ptr, filename.c_str(), filename.length());
+    ptr += (sizeof(char) * filename.length());
+    char ver[2] = {';','1'};
+    memcpy(ptr, ver, sizeof(ver));
+    
+    ifstream recordFile;
+    imgPath.seekp(extentSector * LOGICAL_SECTOR_SIZE, ios_base::beg);
+    
+    recordFile.open (filename, ifstream::binary);
     if (recordFile.is_open()){
         while ((amt = recordFile.readsome(buffer,1000)) > 0){
           imgPath.write(buffer,amt);

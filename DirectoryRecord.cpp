@@ -7,7 +7,7 @@
 DirectoryRecord::DirectoryRecord(int fileNameSize)
 {
     this->dr = (DirectoryRecordS*)malloc(sizeof(DirectoryRecordS) + fileNameSize);
-    this->dr->length = 33 + fileNameSize;
+    this->dr->length = 33 + fileNameSize;  //This changed
 }
 
 //Copy Constructor
