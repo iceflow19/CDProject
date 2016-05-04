@@ -1,11 +1,13 @@
 #include <stdio.h>
 #include <string.h>
 #include "DirectoryRecord.h"
+#include "BothEndianInt.h"
 
 //Allocate a new DirectoryRecord given the file name size
 DirectoryRecord::DirectoryRecord(int fileNameSize)
 {
     this->dr = (DirectoryRecordS*)malloc(sizeof(DirectoryRecordS) + fileNameSize);
+    this->dr->length = 33 + fileNameSize;
 }
 
 //Copy Constructor
