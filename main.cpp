@@ -5,6 +5,9 @@
 #include <cstring>
 #include <dirent.h>
 #include <math.h>
+#include <sys/stat.h>
+#include <sys/types.h>
+#include <fcntl.h>
 
 #include "VolumeDescriptor.h"
 #include "LPathRecord.h"
@@ -20,8 +23,9 @@ using namespace std;
 void initRootRecord(DirectoryRecord &rcd);
 void writeDirectory(ofstream imgPath);
 int getDirectorySize(ProgramOptions* po);
-int createDirectory(ofstream &imgPath, ProgramOptions* po, int &pathTableSize);
-void writeRecord(DirectoryRecord &rcd, int &extentSector);
+int createDirectory(ofstream &imgPath, ProgramOptions* po, DirectoryRecord * rootRecord);
+void writeRecord(DirectoryRecord &rcd, ofstream &imgPath,
+        struct dirent *direcRent, int &extentSector, string path);
 
 int main(int argc, char** argv) {
     //Get the command line options
@@ -45,7 +49,7 @@ int main(int argc, char** argv) {
         
         //Create root directory and children
         DirectoryRecord * rootRecord = new DirectoryRecord(1);
-        lastSector = createDirectory(imgPath, po, pathTableSize);
+        lastSector = createDirectory(imgPath, po, rootRecord);
         
         //Create and write Primary Volume Descriptor
         VolumeDescriptor * pvd = new VolumeDescriptor(po, pathTableSize);
@@ -121,15 +125,18 @@ int getDirectorySize(ProgramOptions * po) {
     return size;
 }
 
-int createDirectory(ofstream &imgPath, ProgramOptions* po, DirectoryRecord * rootRecord, int &pathTableSize) {
+int createDirectory(
+    ofstream &imgPath,
+    ProgramOptions* po,
+    DirectoryRecord * rootRecord
+){
     DIR *direc;
     struct dirent *direcRent;
     BothEndianInt extent;
-    int size = 0;
     int currentLocation = LOGICAL_SECTOR_SIZE * ROOT_RECORD_SECTOR;
     DirectoryRecord * currentRecord;
     int dirTreeSize = getDirectorySize(po);
-    int extentSector = ceil(dirTreeSize / 2048);
+    int extentSector = ROOT_RECORD_SECTOR + ceil(dirTreeSize / 2048.0);
     
     //Create Root Record and write it
     initRootRecord(*rootRecord, dirTreeSize);
@@ -158,8 +165,8 @@ int createDirectory(ofstream &imgPath, ProgramOptions* po, DirectoryRecord * roo
             if (!(currentLocation % 2048 + currentRecord->dr->length <= 2048)){
                 currentLocation += (2048 - (currentLocation % 2048)); //skip ahead
             }
+            writeRecord(*currentRecord, imgPath, direcRent, extentSector, po->directoryTree);
             imgPath.seekp(currentLocation, ios_base::beg);
-            writeRecord(*currentRecord, extentSector);
             currentRecord->write(imgPath);
             currentLocation += currentRecord->dr->length;
             delete currentRecord;
@@ -172,23 +179,37 @@ int createDirectory(ofstream &imgPath, ProgramOptions* po, DirectoryRecord * roo
     return extentSector;
 }
 
-void writeRecord(DirectoryRecord &rcd, int &extentSector) {
+void writeRecord(
+    DirectoryRecord &rcd,
+    ofstream &imgPath,
+    struct dirent *direcRent,
+    int &extentSector,
+    string path
+){
     BothEndianInt extent, size;
     BothEndianShort sequenceNumber;
     char time[7];
+    struct stat st;
+    int status, amt;
+    char buffer[1000];
+    int fildes;
+    
+    path.append(direcRent->d_name);
+    fildes = open(path.c_str(), O_RDWR);
+    status = fstat(fildes, &st);
 
     //Set the bothendians
-    //extent.setValue(20);
-    //size.setValue(34);
-    //sequenceNumber.setValue(1);
-    //getDateTime(time);
+    extent.setValue(extentSector);
+    size.setValue(st.st_size);
+    sequenceNumber.setValue(1);
+    getDateTime(time);
 
     //Fill in the default information
     rcd.dr->xaLength = 0;
-    rcd.dr->fileFlags = 2;
+    rcd.dr->fileFlags = 0;
     rcd.dr->fileUnitSize = 0;
     rcd.dr->interleaveGap = 0;
-    rcd.dr->filename.len = 1;
+    rcd.dr->filename.len = strlen(direcRent->d_name) + 2;
 
     //We have to memcpy the byte arrays
     memcpy(&rcd.dr->recordingTime, time, 7);
@@ -196,4 +217,23 @@ void writeRecord(DirectoryRecord &rcd, int &extentSector) {
     memcpy(&rcd.dr->size, size.getBytes(), sizeof (rcd.dr->size));
     memcpy(&rcd.dr->volumeSequenceNumber, sequenceNumber.getBytes(),
             sizeof (rcd.dr->volumeSequenceNumber));
+    
+    char * ptr = (rcd.dr->filename.str) + sizeof(char);
+    memcpy(ptr, direcRent->d_name, sizeof(strlen(direcRent->d_name)));
+    ptr += (sizeof(char) * strlen(direcRent->d_name));
+    char ver[2] = {';','1'};
+    memcpy(ptr, ver, sizeof(ver));
+    
+    ifstream recordFile;
+    imgPath.seekp(extentSector * LOGICAL_SECTOR_SIZE, ios_base::beg);
+    
+    recordFile.open (path, ifstream::binary);
+    if (recordFile.is_open()){
+        while ((amt = recordFile.readsome(buffer,1000)) > 0){
+          imgPath.write(buffer,amt);
+        }
+        recordFile.close();
+    }
+    
+    extentSector += ceil(st.st_size / 2048.0);
 }
