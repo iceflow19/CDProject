@@ -60,7 +60,7 @@
           <commandLine>-Wno-narrowing</commandLine>
         </ccTool>
         <linkerTool>
-          <output>${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/isowriter</output>
+          <output>${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/isogenerator</output>
         </linkerTool>
       </compileType>
       <item path="BothEndianInt.cpp" ex="false" tool="1" flavor2="0">

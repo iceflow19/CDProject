@@ -9,19 +9,19 @@ CND_DISTDIR=dist
 # Debug configuration
 CND_PLATFORM_Debug=GNU-Linux
 CND_ARTIFACT_DIR_Debug=dist/Debug/GNU-Linux
-CND_ARTIFACT_NAME_Debug=isowriter
-CND_ARTIFACT_PATH_Debug=dist/Debug/GNU-Linux/isowriter
+CND_ARTIFACT_NAME_Debug=isogenerator
+CND_ARTIFACT_PATH_Debug=dist/Debug/GNU-Linux/isogenerator
 CND_PACKAGE_DIR_Debug=dist/Debug/GNU-Linux/package
-CND_PACKAGE_NAME_Debug=isowriter.tar
-CND_PACKAGE_PATH_Debug=dist/Debug/GNU-Linux/package/isowriter.tar
+CND_PACKAGE_NAME_Debug=isogenerator.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/GNU-Linux/package/isogenerator.tar
 # Release configuration
 CND_PLATFORM_Release=GNU-Linux
 CND_ARTIFACT_DIR_Release=dist/Release/GNU-Linux
-CND_ARTIFACT_NAME_Release=isowriter
-CND_ARTIFACT_PATH_Release=dist/Release/GNU-Linux/isowriter
+CND_ARTIFACT_NAME_Release=isogenerator
+CND_ARTIFACT_PATH_Release=dist/Release/GNU-Linux/isogenerator
 CND_PACKAGE_DIR_Release=dist/Release/GNU-Linux/package
-CND_PACKAGE_NAME_Release=isowriter.tar
-CND_PACKAGE_PATH_Release=dist/Release/GNU-Linux/package/isowriter.tar
+CND_PACKAGE_NAME_Release=isogenerator.tar
+CND_PACKAGE_PATH_Release=dist/Release/GNU-Linux/package/isogenerator.tar
 #
 # include compiler specific variables
 #
