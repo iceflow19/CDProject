@@ -5,6 +5,7 @@
 DirectoryRecord::DirectoryRecord(int nameSize)
 {
     this->dr = (SDirRecord*)malloc(sizeof(SDirRecord) + nameSize);
+    this->dr->length = 33 + nameSize;
 }
 
 void DirectoryRecord::write(std::ofstream &image)
